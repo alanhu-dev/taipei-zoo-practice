@@ -31,6 +31,6 @@ class PlantPagingSource(
     override fun getRefreshKey(state: PagingState<Int, Plant>): Int? = null
 
     companion object {
-        const val pageSize = 20
+        const val pageSize = 10
     }
 }

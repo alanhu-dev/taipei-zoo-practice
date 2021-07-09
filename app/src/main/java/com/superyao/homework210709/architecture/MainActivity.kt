@@ -10,6 +10,7 @@ import com.superyao.homework210709.databinding.ActivityMainBinding
 import com.superyao.homework210709.databinding.ItemPavilionBinding
 import com.superyao.homework210709.model.Pavilion
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
@@ -51,8 +52,7 @@ class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
         binding.content.swipeRefresh.isRefreshing = true
     }
 
-    override fun onItemClick(itemBinding: ItemPavilionBinding, pavilion: Pavilion) {
-        viewModel.selectedPavilion.postValue(pavilion)
-        PlantFragment.newInstance().apply { show(supportFragmentManager, tag) }
+    override fun onItemClick(pavilion: Pavilion) {
+        PlantFragment.newInstance(pavilion).apply { show(supportFragmentManager, tag) }
     }
 }

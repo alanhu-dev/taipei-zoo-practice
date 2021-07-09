@@ -15,8 +15,6 @@ class MainViewModel @Inject constructor(
     private val repository: DataRepository
 ) : ViewModel() {
 
-    val selectedPavilion = MutableLiveData<Pavilion>()
-
     val pavilions = MutableLiveData<List<Pavilion>>()
 
     fun refreshPavilions(query: String = "") {

@@ -24,7 +24,7 @@ class PavilionListAdapter(
 ) : ListAdapter<Pavilion, PavilionListAdapter.ViewHolder>(PavilionDiffCallback()) {
 
     interface Callback {
-        fun onItemClick(itemBinding: ItemPavilionBinding, pavilion: Pavilion)
+        fun onItemClick(pavilion: Pavilion)
     }
 
     inner class ViewHolder(
@@ -33,7 +33,7 @@ class PavilionListAdapter(
 
         init {
             binding.root.setOnClickListener {
-                callback.onItemClick(binding, getItem(bindingAdapterPosition))
+                callback.onItemClick(getItem(bindingAdapterPosition))
             }
         }
 

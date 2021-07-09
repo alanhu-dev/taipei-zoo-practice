@@ -15,11 +15,13 @@ import com.superyao.homework210709.architecture.MainViewModel
 import com.superyao.homework210709.architecture.pavilion.paging.ItemLoadStateAdapter
 import com.superyao.homework210709.architecture.pavilion.paging.PlantPagingAdapter
 import com.superyao.homework210709.databinding.FragmentPlantBinding
+import com.superyao.homework210709.model.Pavilion
 import com.superyao.homework210709.model.Plant
 import com.superyao.homework210709.utils.roundedCornersThumbnail
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class PlantFragment : BottomSheetDialogFragment(), PlantPagingAdapter.Callback {
@@ -49,10 +51,7 @@ class PlantFragment : BottomSheetDialogFragment(), PlantPagingAdapter.Callback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // bind
-
-        mainViewModel.selectedPavilion.observe(viewLifecycleOwner) { pavilion ->
+        arguments?.getParcelable<Pavilion>(PAVILION)?.let { pavilion ->
             binding.apply {
                 name.text = pavilion.eName
                 image.roundedCornersThumbnail(pavilion.ePicURL)
@@ -87,6 +86,10 @@ class PlantFragment : BottomSheetDialogFragment(), PlantPagingAdapter.Callback {
     }
 
     companion object {
-        fun newInstance() = PlantFragment()
+        private const val PAVILION = "PAVILION"
+
+        fun newInstance(pavilion: Pavilion) = PlantFragment().apply {
+            arguments?.putParcelable(PAVILION, pavilion)
+        }
     }
 }

@@ -45,9 +45,7 @@ class PlantPagingAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
-                    callback.onItemClick(getItem(bindingAdapterPosition))
-                }
+                callback.onItemClick(getItem(bindingAdapterPosition))
             }
         }
 
