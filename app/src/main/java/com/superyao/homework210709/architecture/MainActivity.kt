@@ -7,10 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.superyao.homework210709.architecture.pavilion.PlantFragment
 import com.superyao.homework210709.databinding.ActivityMainBinding
-import com.superyao.homework210709.databinding.ItemPavilionBinding
 import com.superyao.homework210709.model.Pavilion
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {

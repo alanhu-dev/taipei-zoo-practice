@@ -9,22 +9,26 @@ import com.superyao.homework210709.databinding.ItemPavilionBinding
 import com.superyao.homework210709.model.Pavilion
 import com.superyao.homework210709.utils.roundedCornersThumbnail
 
-class PavilionDiffCallback : DiffUtil.ItemCallback<Pavilion>() {
-    override fun areItemsTheSame(oldItem: Pavilion, newItem: Pavilion): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Pavilion, newItem: Pavilion): Boolean {
-        return oldItem == newItem
-    }
-}
-
 class PavilionListAdapter(
     private val callback: Callback,
 ) : ListAdapter<Pavilion, PavilionListAdapter.ViewHolder>(PavilionDiffCallback()) {
 
     interface Callback {
         fun onItemClick(pavilion: Pavilion)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemPavilionBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
     inner class ViewHolder(
@@ -48,18 +52,14 @@ class PavilionListAdapter(
             binding.image.roundedCornersThumbnail(pavilion.ePicURL)
         }
     }
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            ItemPavilionBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+class PavilionDiffCallback : DiffUtil.ItemCallback<Pavilion>() {
+    override fun areItemsTheSame(oldItem: Pavilion, newItem: Pavilion): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun areContentsTheSame(oldItem: Pavilion, newItem: Pavilion): Boolean {
+        return oldItem == newItem
     }
 }

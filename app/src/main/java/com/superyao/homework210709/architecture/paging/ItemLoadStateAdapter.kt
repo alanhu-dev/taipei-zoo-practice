@@ -1,4 +1,4 @@
-package com.superyao.homework210709.architecture.pavilion.paging
+package com.superyao.homework210709.architecture.paging
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,20 @@ import com.superyao.homework210709.databinding.ItemPagingFooterBinding
 class ItemLoadStateAdapter(
     private val retry: () -> Unit
 ) : LoadStateAdapter<ItemLoadStateAdapter.LoadStateViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
+        return LoadStateViewHolder(
+            ItemPagingFooterBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
+        holder.bind(loadState)
+    }
 
     inner class LoadStateViewHolder(
         private val binding: ItemPagingFooterBinding,
@@ -35,16 +49,4 @@ class ItemLoadStateAdapter(
             }
         }
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder =
-        LoadStateViewHolder(
-            ItemPagingFooterBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-
-    override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) =
-        holder.bind(loadState)
 }

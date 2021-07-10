@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.superyao.homework210709.architecture.pavilion.paging.PlantDiffCallback
 import com.superyao.homework210709.databinding.ItemPlantBinding
 import com.superyao.homework210709.model.Plant
 import com.superyao.homework210709.utils.roundedCornersThumbnail
-import timber.log.Timber
 
 class PlantListAdapter(
     private val callback: Callback,
@@ -17,6 +15,20 @@ class PlantListAdapter(
 
     interface Callback {
         fun onItemClick(plant: Plant)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            ItemPlantBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
     inner class ViewHolder(
@@ -29,25 +41,20 @@ class PlantListAdapter(
             }
         }
 
-        fun bind(plant: Plant) {
-            binding.name.text = plant.fNameCh
-            binding.info.text = plant.fAlsoKnown
-            binding.image.roundedCornersThumbnail(plant.fPic01URL)
+        fun bind(Plant: Plant) {
+            binding.name.text = Plant.fNameCh
+            binding.info.text = Plant.fAlsoKnown
+            binding.image.roundedCornersThumbnail(Plant.fPic01URL)
         }
     }
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        Timber.d("onCreateViewHolder")
-        return ViewHolder(
-            ItemPlantBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
+    override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun areContentsTheSame(oldItem: Plant, newItem: Plant): Boolean {
+        return oldItem == newItem
     }
 }

@@ -1,4 +1,4 @@
-package com.superyao.homework210709.architecture.pavilion.paging
+package com.superyao.homework210709.architecture.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
