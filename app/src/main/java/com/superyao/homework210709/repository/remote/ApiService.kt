@@ -1,4 +1,4 @@
-package com.superyao.homework210709.api
+package com.superyao.homework210709.repository.remote
 
 import com.superyao.homework210709.model.PavilionResponse
 import com.superyao.homework210709.model.PlantResponse

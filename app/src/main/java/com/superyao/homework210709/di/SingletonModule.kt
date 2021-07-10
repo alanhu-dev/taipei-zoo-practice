@@ -1,7 +1,12 @@
 package com.superyao.homework210709.di
 
-import com.superyao.homework210709.api.ApiService
+import android.app.Application
+import android.content.Context
+import com.superyao.homework210709.repository.remote.ApiService
 import com.superyao.homework210709.repository.DataRepository
+import com.superyao.homework210709.repository.local.DataBase
+import com.superyao.homework210709.repository.local.LocalDataSource
+import com.superyao.homework210709.repository.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,5 +45,28 @@ object SingletonModule {
 
     @Provides
     @Singleton
-    fun provideDataRepository(apiService: ApiService) = DataRepository(apiService)
+    fun provideDataBase(application: Application): DataBase {
+        return DataBase.build(application)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(apiService: ApiService): RemoteDataSource {
+        return RemoteDataSource(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalDataSource(dataBase: DataBase): LocalDataSource {
+        return LocalDataSource(dataBase)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDataRepository(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource,
+    ): DataRepository {
+        return DataRepository(remoteDataSource, localDataSource)
+    }
 }

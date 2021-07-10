@@ -18,7 +18,7 @@ class PavilionViewModel @Inject constructor(
 
     fun refreshPlants(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = repository.getPlant(query)
+            val data = repository.getPlants(query)
             plants.postValue(data)
         }
     }

@@ -17,7 +17,7 @@ class PlantPagingSource(
             // Start refresh at page 1 if undefined.
             val pageNumber = params.key ?: 0
             val response = withContext(Dispatchers.IO) {
-                repository.getPlant(query, pageSize, pageSize * pageNumber)
+                repository.getPlants(query, pageSize, pageSize * pageNumber)
             }
             val nextKey = if (response.size >= pageSize) pageNumber + 1 else null
             LoadResult.Page(response, null, nextKey)
