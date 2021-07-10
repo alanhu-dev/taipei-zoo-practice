@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
+import com.superyao.dev.toolkit.color
 import com.superyao.dev.toolkit.urlIntent
+import com.superyao.homework210709.R
 import com.superyao.homework210709.architecture.PlantDetailFragment
 import com.superyao.homework210709.databinding.ActivityPavilionBinding
 import com.superyao.homework210709.model.Pavilion
@@ -33,11 +35,17 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
     private fun initUI() {
         binding = ActivityPavilionBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setNavigationOnClickListener { finish() }
+        supportActionBar?.title = pavilion?.eName
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.collapsingToolbar.setExpandedTitleColor(color(android.R.color.white))
+        binding.collapsingToolbar.setCollapsedTitleTextColor(color(android.R.color.white))
+
         // pavilion
 
         pavilion?.let { pavilion ->
             binding.image.roundedCornersThumbnail(pavilion.ePicURL)
-            binding.name.text = pavilion.eName
             binding.info.text = pavilion.eInfo
             val categoryAndMemo = "${pavilion.eCategory}\n${pavilion.eMemo}"
             binding.memo.text = categoryAndMemo
