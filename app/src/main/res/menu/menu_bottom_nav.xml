@@ -4,12 +4,11 @@
     <item
         android:id="@+id/navigation_zoo"
         android:icon="@drawable/zoo"
-        android:title="Zoo" />
+        android:title="園區" />
 
     <item
         android:id="@+id/navigation_plant"
         android:icon="@drawable/plant"
-        android:title="Plant" />
-
+        android:title="園內植物" />
 
 </menu>

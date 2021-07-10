@@ -34,6 +34,7 @@ class PlantAllFragment : BottomSheetDialogFragment(), PlantPagingAdapter.Callbac
     ) = FragmentPlantAllBinding.inflate(inflater, container, false).apply {
         binding = this
         pagingAdapter = PlantPagingAdapter(this@PlantAllFragment)
+        swipeRefresh.setOnRefreshListener { pagingAdapter.refresh() }
         recyclerView.apply {
             adapter = pagingAdapter.run { withLoadStateFooter(ItemLoadStateAdapter(::refresh)) }
             itemAnimator = DefaultItemAnimator()
