@@ -2,24 +2,23 @@ package com.superyao.homework210709.repository
 
 import android.app.Application
 import android.widget.Toast
-import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import com.superyao.homework210709.model.Pavilion
 import com.superyao.homework210709.model.Plant
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class DataRepository(
     private val application: Application,
     private val remoteDataSource: DataSource,
     private val localDataSource: DataSource,
 ) {
-    private fun toastRemoteError() {
-        ProcessLifecycleOwner.get().lifecycleScope.launch {
+    private suspend fun toastRemoteError() {
+        withContext(Dispatchers.Main) {
             Toast.makeText(application, "請求失敗，將讀取自 Database", Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun getPavilions(
+    suspend fun getPavilions(
         query: String = "",
         limit: Int = 0,
         offset: Int = 0,
@@ -34,7 +33,7 @@ class DataRepository(
         }
     }
 
-    fun getPlants(
+    suspend fun getPlants(
         query: String,
         limit: Int = 0,
         offset: Int = 0,
