@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.superyao.dev.toolkit.color
 import com.superyao.dev.toolkit.urlIntent
-import com.superyao.homework210709.R
 import com.superyao.homework210709.architecture.PlantDetailFragment
 import com.superyao.homework210709.databinding.ActivityPavilionBinding
 import com.superyao.homework210709.model.Pavilion

@@ -80,7 +80,7 @@
                 app:layout_collapseMode="pin"
                 app:contentInsetStartWithNavigation="0dp"
                 app:navigationIconTint="@color/windowBackground"
-                app:title="大貓熊館"/>
+                app:title="大貓熊館" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
