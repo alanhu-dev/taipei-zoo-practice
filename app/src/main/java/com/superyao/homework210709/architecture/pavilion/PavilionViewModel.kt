@@ -11,10 +11,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PlantViewModel @Inject constructor(
+class PavilionViewModel @Inject constructor(
     private val repository: DataRepository
 ) : ViewModel() {
-
     val plants = MutableLiveData<List<Plant>>()
 
     fun refreshPlants(query: String) {

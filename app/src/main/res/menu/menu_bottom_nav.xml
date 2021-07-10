@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_zoo"
+        android:icon="@drawable/zoo"
+        android:title="Zoo" />
+
+    <item
+        android:id="@+id/navigation_plant"
+        android:icon="@drawable/plant"
+        android:title="Plant" />
+
+
+</menu>

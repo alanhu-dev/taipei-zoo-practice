@@ -1,4 +1,4 @@
-package com.superyao.homework210709.architecture
+package com.superyao.homework210709.architecture.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

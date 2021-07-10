@@ -1,11 +1,13 @@
-package com.superyao.homework210709.architecture
+package com.superyao.homework210709.architecture.main
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DefaultItemAnimator
-import com.superyao.homework210709.architecture.pavilion.PlantFragment
+import com.superyao.homework210709.R
+import com.superyao.homework210709.architecture.pavilion.PavilionActivity
 import com.superyao.homework210709.databinding.ActivityMainBinding
 import com.superyao.homework210709.model.Pavilion
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
 
     private val viewModel by viewModels<MainViewModel>()
 
+    private val plantAllFragment = PlantAllFragment.newInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initUI()
@@ -26,7 +30,6 @@ class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
     private fun initUI() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        // RecyclerView
         val pavilionAdapter = PavilionListAdapter(this)
         binding.content.recyclerView.apply {
             adapter = pavilionAdapter
@@ -34,10 +37,23 @@ class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
             setHasFixedSize(true)
         }
 
-        // swipeRefresh
         binding.content.swipeRefresh.setOnRefreshListener { refresh() }
 
+        binding.content.bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_zoo -> supportFragmentManager.commit { hide(plantAllFragment) }
+                R.id.navigation_plant -> supportFragmentManager.commit {
+                    if (!plantAllFragment.isAdded) {
+                        add(binding.content.plantFragment.id, plantAllFragment)
+                    }
+                    show(plantAllFragment)
+                }
+            }
+            true
+        }
+
         // bind
+
         viewModel.pavilions.observe(this) {
             pavilionAdapter.submitList(it)
             binding.content.swipeRefresh.isRefreshing = false
@@ -51,6 +67,6 @@ class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
     }
 
     override fun onItemClick(pavilion: Pavilion) {
-        PlantFragment.newInstance(pavilion).apply { show(supportFragmentManager, tag) }
+        PavilionActivity.launch(this, pavilion)
     }
 }

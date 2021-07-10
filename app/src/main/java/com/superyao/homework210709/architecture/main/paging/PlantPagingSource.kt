@@ -1,4 +1,4 @@
-package com.superyao.homework210709.architecture.paging
+package com.superyao.homework210709.architecture.main.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

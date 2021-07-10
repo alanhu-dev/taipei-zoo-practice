@@ -3,12 +3,8 @@ package com.superyao.homework210709.repository
 import com.superyao.homework210709.api.ApiService
 import com.superyao.homework210709.model.Pavilion
 import com.superyao.homework210709.model.Plant
-import timber.log.Timber
-import javax.inject.Inject
 
-class DataRepository @Inject constructor(
-    private val apiService: ApiService
-) {
+class DataRepository constructor(private val apiService: ApiService) {
     fun getPavilion(
         query: String = "",
         limit: Int = 0,

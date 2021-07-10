@@ -20,9 +20,9 @@
     <!---->
 
     <!-- Main -->
-    <color name="colorPrimary">#008483</color>
-    <color name="colorPrimaryDark">#047776</color>
-    <color name="colorPrimaryGradient">#38AAB1</color>
+    <color name="colorPrimary">#5CBBC1</color>
+    <color name="colorPrimaryDark">#4EA3A8</color>
+    <color name="colorPrimaryGradient">#6BD2D8</color>
     <color name="colorAccent">#278CDA</color>
     <color name="colorAccentAlpha75">#BF278CDA</color>
     <color name="colorAccentAlpha50">#80278CDA</color>
