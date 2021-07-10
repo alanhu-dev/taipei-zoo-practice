@@ -32,26 +32,15 @@ class PlantDetailFragment : BottomSheetDialogFragment() {
         binding = this
         plant?.let { plant ->
             image.roundedCornersThumbnail(plant.fPic01URL)
-            name.text = plant.fNameCh
-            info.text = plant.fFeature
-            memo.text = plant.fAlsoKnown
+            name.text = "${plant.fNameCh}\n${plant.fNameEn}\n${plant.fNameLatin}"
+            location.text = plant.fLocation
+            nickName.text = plant.fAlsoKnown
+            brief.text = plant.fBrief
+            feature.text = plant.fFeature
+            function.text = plant.fFunctionApplication
+            update.text = plant.fUpdate
         }
     }.root
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // auto expanded
-        dialog?.apply {
-            setOnShowListener {
-                findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.let {
-                    BottomSheetBehavior.from(it).apply {
-                        state = BottomSheetBehavior.STATE_EXPANDED
-                        skipCollapsed = true
-                    }
-                }
-            }
-        }
-    }
 
     companion object {
         private const val PLANT = "PLANT"
