@@ -10,7 +10,8 @@ class LocalDataSource(private val dataBase: DataBase) : DataSource {
     }
 
     override fun getPlants(query: String, limit: Int, offset: Int): List<Plant> {
-        return dataBase.plantDao().getPlants(query)
+        val wrappedQuery = "%$query%"
+        return dataBase.plantDao().getPlants(wrappedQuery, limit, offset)
     }
 
     override fun savePavilions(vararg pavilion: Pavilion): LongArray {

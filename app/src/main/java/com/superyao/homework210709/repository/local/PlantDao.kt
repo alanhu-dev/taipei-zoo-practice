@@ -8,8 +8,8 @@ abstract class PlantDao {
     @Query("SELECT COUNT(id) FROM plant")
     abstract fun getSize(): Int
 
-    @Query("SELECT * FROM plant WHERE fLocation LIKE :pavilionName")
-    abstract fun getPlants(pavilionName: String): List<Plant>
+    @Query("SELECT * FROM plant WHERE (fLocation LIKE :pavilionName AND id < (:limit + 1) + :offset AND id > :offset)")
+    abstract fun getPlants(pavilionName: String, limit: Int, offset: Int): List<Plant>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(vararg plant: Plant): LongArray

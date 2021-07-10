@@ -1,11 +1,11 @@
 package com.superyao.homework210709.di
 
+import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
-import com.superyao.homework210709.repository.remote.ApiService
 import com.superyao.homework210709.repository.DataRepository
 import com.superyao.homework210709.repository.local.DataBase
 import com.superyao.homework210709.repository.local.LocalDataSource
+import com.superyao.homework210709.repository.remote.ApiService
 import com.superyao.homework210709.repository.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -14,27 +14,84 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 import javax.inject.Singleton
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 @Module
 @InstallIn(SingletonComponent::class)
 object SingletonModule {
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    private fun baseOkHttpBuilder(): OkHttpClient.Builder {
         return OkHttpClient.Builder()
             .retryOnConnectionFailure(true)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(1, TimeUnit.MINUTES)
             .writeTimeout(3, TimeUnit.MINUTES)
-            .build()
+    }
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class CommonOkHttpClient
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class UnsafeOkHttpClient
+
+    @Provides
+    @Singleton
+    @CommonOkHttpClient
+    fun provideOkHttpClient(): OkHttpClient {
+        return baseOkHttpBuilder().build()
     }
 
     @Provides
     @Singleton
-    fun provideApiService(okHttpClient: OkHttpClient): ApiService {
+    @UnsafeOkHttpClient
+    @SuppressLint("TrustAllX509TrustManager")
+    fun provideUnsafeOkHttpClient(): OkHttpClient {
+        return try {
+            val trustAllCerts = arrayOf<TrustManager>(
+                object : X509TrustManager {
+                    override fun checkClientTrusted(
+                        chain: Array<X509Certificate>,
+                        authType: String
+                    ) {
+                    }
+
+                    override fun checkServerTrusted(
+                        chain: Array<X509Certificate>,
+                        authType: String
+                    ) {
+                    }
+
+                    override fun getAcceptedIssuers(): Array<X509Certificate> {
+                        return arrayOf()
+                    }
+                }
+            )
+            val sslContext = SSLContext.getInstance("SSL")
+            sslContext.init(null, trustAllCerts, SecureRandom())
+            val sslSocketFactory = sslContext.socketFactory
+            // okhttp client
+            baseOkHttpBuilder()
+                .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
+                .hostnameVerifier { _, _ -> true }
+                .build()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            baseOkHttpBuilder().build()
+        }
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(@UnsafeOkHttpClient okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
             .baseUrl(ApiService.baseUrl)
             .client(okHttpClient)
@@ -64,9 +121,10 @@ object SingletonModule {
     @Provides
     @Singleton
     fun provideDataRepository(
+        application: Application,
         remoteDataSource: RemoteDataSource,
         localDataSource: LocalDataSource,
     ): DataRepository {
-        return DataRepository(remoteDataSource, localDataSource)
+        return DataRepository(application, remoteDataSource, localDataSource)
     }
 }
