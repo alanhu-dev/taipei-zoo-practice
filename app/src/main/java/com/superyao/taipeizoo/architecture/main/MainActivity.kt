@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.google.android.material.transition.MaterialFadeThrough
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.architecture.main.pavilion.PavilionFragment
 import com.superyao.taipeizoo.architecture.main.plant.PlantAllFragment
@@ -36,8 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupFragments() {
         bottomNavFragments = arrayOf(
-            PavilionFragment.newInstance(),
-            PlantAllFragment.newInstance(),
+            PavilionFragment.newInstance().apply { enterTransition = createTransition() },
+            PlantAllFragment.newInstance().apply { enterTransition = createTransition() },
         )
         switchPage(PAVILION)
     }
@@ -49,6 +50,13 @@ class MainActivity : AppCompatActivity() {
             }
             bottomNavFragments.forEach { hide(it) }
             show(bottomNavFragments[idx])
+        }
+    }
+
+    private fun createTransition(): MaterialFadeThrough {
+        return MaterialFadeThrough().apply {
+            addTarget(R.id.pavilion_fragment)
+            addTarget(R.id.plant_all_fragment)
         }
     }
 
