@@ -2,15 +2,12 @@
 <resources>
 
     <color name="textFitBackground">@color/colorGray72</color>
-    <color name="windowBackground">@color/colorhuntPalette15830_Light</color>
+    <color name="windowBackground">#f5f5f5</color>
     <color name="ripple">@color/colorGray192</color>
 
     <color name="colorPrimary">#5CBBC1</color>
     <color name="colorPrimaryDark">#4EA3A8</color>
     <color name="colorAccent">#278CDA</color>
-
-    <!-- https://colorhunt.co/palette/15830 -->
-    <color name="colorhuntPalette15830_Light">#f5f5f5</color>
 
     <color name="colorGray192">#C0C0C0</color>
     <color name="colorGray144">#909090</color>

@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_zoo -> switchPage(PAVILION)
+                R.id.navigation_pavilion -> switchPage(PAVILION)
                 R.id.navigation_plant -> switchPage(PLANT_ALL)
             }
             true

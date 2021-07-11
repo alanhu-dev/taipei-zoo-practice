@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_zoo"
+        android:id="@+id/navigation_pavilion"
         android:icon="@drawable/zoo"
         android:title="@string/pavilion" />
 
