@@ -82,7 +82,7 @@
                 style="@style/PositiveButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="在網頁開啟"
+                android:text="@string/open_on_web"
                 app:layout_constraintTop_toTopOf="@id/memo"
                 app:layout_constraintBottom_toBottomOf="@id/memo"
                 app:layout_constraintEnd_toEndOf="parent" />

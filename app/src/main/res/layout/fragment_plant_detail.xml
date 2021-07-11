@@ -35,71 +35,156 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:textSize="@dimen/font_xl"
             android:textStyle="bold"
+            android:textColor="@color/textFitBackground"
             tools:text="大貓熊館" />
+
+        <TextView
+            android:id="@+id/location_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/font_l"
+            android:textColor="@color/textFitBackground"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/flower"
+            tools:text="Title"/>
 
         <TextView
             android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/textFitBackground"
             tools:text="館內包括一個戶外展示場和兩個室內展示場，提供多樣的活動空間及攀爬、遮蔭設施，還有大小石塊及流瀑水。戶外展示場則模擬大貓熊野外棲息地，草坪寬闊，並以濃綠喬木構成背景。" />
 
         <TextView
-            android:id="@+id/nick_name"
+            android:id="@+id/alias_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textSize="@dimen/font_l"
+            android:textColor="@color/textFitBackground"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/flower"
+            tools:text="Title"/>
+
+        <TextView
+            android:id="@+id/alias_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/textFitBackground"
             tools:text="館內包括一個戶外展示場和兩個室內展示場，提供多樣的活動空間及攀爬、遮蔭設施，還有大小石塊及流瀑水。戶外展示場則模擬大貓熊野外棲息地，草坪寬闊，並以濃綠喬木構成背景。" />
+
+        <TextView
+            android:id="@+id/brief_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/font_l"
+            android:textColor="@color/textFitBackground"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/flower"
+            tools:text="Title"/>
 
         <TextView
             android:id="@+id/brief"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/textFitBackground"
             tools:text="館內包括一個戶外展示場和兩個室內展示場，提供多樣的活動空間及攀爬、遮蔭設施，還有大小石塊及流瀑水。戶外展示場則模擬大貓熊野外棲息地，草坪寬闊，並以濃綠喬木構成背景。" />
+
+        <TextView
+            android:id="@+id/feature_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/font_l"
+            android:textColor="@color/textFitBackground"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/flower"
+            tools:text="Title"/>
 
         <TextView
             android:id="@+id/feature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/textFitBackground"
             tools:text="館內包括一個戶外展示場和兩個室內展示場，提供多樣的活動空間及攀爬、遮蔭設施，還有大小石塊及流瀑水。戶外展示場則模擬大貓熊野外棲息地，草坪寬闊，並以濃綠喬木構成背景。" />
+
+        <TextView
+            android:id="@+id/function_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/font_l"
+            android:textColor="@color/textFitBackground"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/flower"
+            tools:text="Title"/>
 
         <TextView
             android:id="@+id/function"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/textFitBackground"
             tools:text="館內包括一個戶外展示場和兩個室內展示場，提供多樣的活動空間及攀爬、遮蔭設施，還有大小石塊及流瀑水。戶外展示場則模擬大貓熊野外棲息地，草坪寬闊，並以濃綠喬木構成背景。" />
 
         <TextView
-            android:id="@+id/update"
+            android:id="@+id/last_date_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="@dimen/font_l"
+            android:textColor="@color/textFitBackground"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/flower"
+            tools:text="Title"/>
+
+        <TextView
+            android:id="@+id/last_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/textFitBackground"
             tools:text="館內包括一個戶外展示場和兩個室內展示場，提供多樣的活動空間及攀爬、遮蔭設施，還有大小石塊及流瀑水。戶外展示場則模擬大貓熊野外棲息地，草坪寬闊，並以濃綠喬木構成背景。" />
 
     </LinearLayout>

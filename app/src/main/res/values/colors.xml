@@ -1,64 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!---->
-    <!-- Follow the day & night - Day -->
-    <!---->
-
-    <color name="windowBackground">@color/colorhuntPalette15830_Light</color>
-    <color name="colorDialog">@android:color/white</color>
-    <color name="ripple">@color/colorGray192</color>
-    <color name="scrim">@color/colorTranslucentWhite75</color>
-    <!-- Text -->
     <color name="textFitBackground">@color/colorGray72</color>
-    <color name="subTextFitBackground">@color/colorGray128</color>
-    <!-- Snackbar -->
-    <color name="snackBar">@color/colorDialog</color>
+    <color name="windowBackground">@color/colorhuntPalette15830_Light</color>
+    <color name="ripple">@color/colorGray192</color>
 
-    <!---->
-    <!-- DO NOT follow the day & night -->
-    <!---->
-
-    <!-- Main -->
     <color name="colorPrimary">#5CBBC1</color>
     <color name="colorPrimaryDark">#4EA3A8</color>
-    <color name="colorPrimaryGradient">#6BD2D8</color>
     <color name="colorAccent">#278CDA</color>
-    <color name="colorAccentAlpha75">#BF278CDA</color>
-    <color name="colorAccentAlpha50">#80278CDA</color>
-
-    <color name="thumbnailPlaceholder">@color/colorGray128</color>
-
-    <!---->
-    <!-- Palette -->
-    <!---->
 
     <!-- https://colorhunt.co/palette/15830 -->
-    <color name="colorhuntPalette15830_Primary">#3fc1c9</color>
-    <color name="colorhuntPalette15830_Accent">#fc5185</color>
     <color name="colorhuntPalette15830_Light">#f5f5f5</color>
 
-    <!-- Custom -->
-    <color name="colorMaterial300Yellow">#FFF176</color>
-    <color name="colorDarkBackground">#222831</color>
-
-    <!-- White <-> Black -->
-    <color name="colorGray224">#E0E0E0</color>
     <color name="colorGray192">#C0C0C0</color>
-    <color name="colorGray164">#A4A4A4</color>
     <color name="colorGray144">#909090</color>
     <color name="colorGray128">#808080</color>
-    <color name="colorGray96">#606060</color>
     <color name="colorGray72">#484848</color>
-    <color name="colorGray66">#424242</color>
-    <color name="colorGray48">#303030</color>
-    <color name="colorGray33">#212121</color>
-
-    <!-- Translucent -->
-    <color name="colorTransparent">#00FFFFFF</color>
-    <color name="colorTranslucent">#48FFFFFF</color>
-    <color name="colorTranslucentBlack20">#33000000</color>
-    <color name="colorTranslucentBlack75">#BF000000</color>
-    <color name="colorTranslucentWhite75">#BFFFFFFF</color>
 
 </resources>

@@ -31,13 +31,33 @@ class PlantDetailBottomSheetDialogFragment : BottomSheetDialogFragment() {
         binding = this
         plant?.let { plant ->
             image.roundedCornersShow(plant.fPic01URL, R.drawable.plant)
-            name.text = "${plant.fNameCh}\n${plant.fNameEn}\n${plant.fNameLatin}"
+
+            var names = plant.fNameCh
+            if (plant.fNameEn?.isNotEmpty() == true) {
+                names += "\n${plant.fNameEn}"
+            }
+            if (plant.fNameLatin?.isNotEmpty() == true) {
+                names += "\n${plant.fNameLatin}"
+            }
+            name.text = names
+
+            locationTitle.text = getString(R.string.location)
             location.text = plant.fLocation
-            nickName.text = plant.fAlsoKnown
+
+            aliasTitle.text = getString(R.string.alias)
+            aliasName.text = plant.fAlsoKnown
+
+            briefTitle.text = getString(R.string.brief)
             brief.text = plant.fBrief
+
+            featureTitle.text = getString(R.string.feature)
             feature.text = plant.fFeature
+
+            functionTitle.text = getString(R.string.function)
             function.text = plant.fFunctionApplication
-            update.text = plant.fUpdate
+
+            lastDateTitle.text = getString(R.string.last_update)
+            lastDate.text = plant.fUpdate
         }
     }.root
 

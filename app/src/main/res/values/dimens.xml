@@ -13,6 +13,4 @@
     <dimen name="font_m">14sp</dimen>
     <dimen name="font_l">16sp</dimen>
     <dimen name="font_xl">18sp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
 </resources>

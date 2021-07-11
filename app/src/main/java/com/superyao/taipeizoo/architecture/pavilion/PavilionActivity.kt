@@ -37,11 +37,16 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
         // pavilion
 
         pavilion?.let { pavilion ->
-            binding.title.text = pavilion.eName
             binding.image.show(pavilion.ePicURL, R.drawable.zoo)
+            binding.title.text = pavilion.eName
             binding.info.text = pavilion.eInfo
-            val categoryAndMemo = "${pavilion.eCategory}\n${pavilion.eMemo}"
-            binding.memo.text = categoryAndMemo
+
+            var memo = "${pavilion.eCategory}"
+            if (pavilion.eMemo?.isNotEmpty() == true) {
+                memo += "\n${pavilion.eMemo}"
+            }
+            binding.memo.text = memo
+
             binding.webPage.setOnClickListener {
                 startActivity(urlIntent(pavilion.eURL ?: "https://www.zoo.gov.tw/introduce/"))
             }
