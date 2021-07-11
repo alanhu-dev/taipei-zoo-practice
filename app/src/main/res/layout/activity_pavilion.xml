@@ -102,14 +102,23 @@
 
     <ImageView
         android:id="@+id/empty"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:alpha="0"
         app:layout_constraintTop_toTopOf="@id/recycler_view"
         app:layout_constraintBottom_toBottomOf="@id/recycler_view"
         app:layout_constraintStart_toStartOf="@id/recycler_view"
         app:layout_constraintEnd_toEndOf="@id/recycler_view"
         app:srcCompat="@drawable/plant" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_view"
+        app:layout_constraintStart_toStartOf="@id/recycler_view"
+        app:layout_constraintEnd_toEndOf="@id/recycler_view" />
 
     <View
         android:id="@+id/toolbar_bg"

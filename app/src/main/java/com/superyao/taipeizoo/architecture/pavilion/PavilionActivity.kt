@@ -1,7 +1,6 @@
 package com.superyao.taipeizoo.architecture.pavilion
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -13,7 +12,6 @@ import com.superyao.taipeizoo.model.Pavilion
 import com.superyao.taipeizoo.model.Plant
 import com.superyao.taipeizoo.show
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
@@ -28,7 +26,7 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
         super.onCreate(savedInstanceState)
         pavilion = intent.getParcelableExtra(PAVILION)
         initUI()
-        refresh()
+        loadPlants()
     }
 
     private fun initUI() {
@@ -60,18 +58,13 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
 
         viewModel.plants.observe(this) {
             plantListAdapter.submitList(it)
-//            binding.swipeRefresh.isRefreshing = false
-            binding.empty.visibility = if (it.isEmpty()) View.VISIBLE else View.INVISIBLE
+            binding.empty.alpha = if (it.isEmpty()) .5f else 0f
+            binding.loading.alpha = 0f
         }
-
-//        binding.swipeRefresh.setOnRefreshListener { refresh() }
     }
 
-    private fun refresh() {
-        pavilion?.eName?.let {
-            viewModel.refreshPlants(it)
-//            binding.swipeRefresh.isRefreshing = true
-        }
+    private fun loadPlants() {
+        pavilion?.eName?.let { viewModel.refreshPlants(it) }
     }
 
     override fun onItemClick(plant: Plant) {
