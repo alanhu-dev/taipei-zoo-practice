@@ -15,7 +15,7 @@
 * PavilionActivity 館區詳細資訊頁，手勢效果使用 Motion layout。
 * 植物詳細資訊使用 BottomSheetDialogFragment。
 * 使用 Glide 顯示圖片。
-* 所有圖檔轉為 webp。
+* 所有圖檔轉為 webp，icon 使用 adaptive icon。
 
 ## Others
 * 使用 google 建議的 repository pattern，將 DataSource 分為 LocalDataSource、RemoteDataSource。每次請求到的資料也會存進資料庫，讓使用者在無網路可用時，仍可瀏覽先前儲存的紀錄。
