@@ -101,6 +101,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    <ImageView
+        android:id="@+id/empty"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:alpha=".5"
+        app:layout_constraintTop_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_view"
+        app:layout_constraintStart_toStartOf="@id/recycler_view"
+        app:layout_constraintEnd_toEndOf="@id/recycler_view"
+        app:srcCompat="@drawable/plant" />
+
     <View
         android:id="@+id/toolbar_bg"
         android:layout_width="0dp"

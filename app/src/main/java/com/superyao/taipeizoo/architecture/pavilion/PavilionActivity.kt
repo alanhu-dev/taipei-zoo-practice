@@ -1,6 +1,7 @@
 package com.superyao.taipeizoo.architecture.pavilion
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -60,7 +61,7 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
         viewModel.plants.observe(this) {
             plantListAdapter.submitList(it)
 //            binding.swipeRefresh.isRefreshing = false
-//            binding.empty.visibility = if (it.isEmpty()) View.VISIBLE else View.INVISIBLE
+            binding.empty.visibility = if (it.isEmpty()) View.VISIBLE else View.INVISIBLE
         }
 
 //        binding.swipeRefresh.setOnRefreshListener { refresh() }
