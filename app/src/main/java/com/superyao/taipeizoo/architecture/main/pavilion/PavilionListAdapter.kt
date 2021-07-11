@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.databinding.ItemPavilionBinding
 import com.superyao.taipeizoo.model.Pavilion
-import com.superyao.taipeizoo.show
+import com.superyao.taipeizoo.roundedCornersShow
 
 class PavilionListAdapter(
     private val callback: Callback,
@@ -49,7 +49,7 @@ class PavilionListAdapter(
             } else {
                 pavilion.eMemo
             }
-            binding.image.show(pavilion.ePicURL, R.drawable.zoo)
+            binding.image.roundedCornersShow(pavilion.ePicURL, R.drawable.zoo)
         }
     }
 }

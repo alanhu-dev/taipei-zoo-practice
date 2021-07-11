@@ -11,6 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,11 +29,7 @@ import javax.net.ssl.X509TrustManager
 object SingletonModule {
 
     private fun baseOkHttpBuilder(): OkHttpClient.Builder {
-        return OkHttpClient.Builder()
-            .retryOnConnectionFailure(true)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(1, TimeUnit.MINUTES)
-            .writeTimeout(3, TimeUnit.MINUTES)
+        return OkHttpClient.Builder().retryOnConnectionFailure(true)
     }
 
     @Qualifier

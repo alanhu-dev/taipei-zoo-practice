@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Transition
+        app:constraintSetStart="@layout/activity_pavilion"
+        app:constraintSetEnd="@layout/activity_pavilion_end"
+        app:duration="300">
+
+        <OnSwipe
+            app:touchAnchorId="@id/recycler_view"
+            app:touchAnchorSide="top"
+            app:dragDirection="dragUp" />
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                app:motionTarget="@id/description_container"
+                app:curveFit="linear"
+                app:framePosition="30"
+                android:alpha="0"/>
+
+            <KeyAttribute
+                app:motionTarget="@id/toolbar_bg"
+                app:curveFit="linear"
+                app:framePosition="70"
+                android:alpha="0"/>
+
+            <KeyAttribute
+                app:motionTarget="@id/title"
+                app:curveFit="linear"
+                app:framePosition="90"
+                android:alpha="0"/>
+
+        </KeyFrameSet>
+
+    </Transition>
+
+</MotionScene>

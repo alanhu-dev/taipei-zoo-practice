@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.databinding.ItemPlantBinding
 import com.superyao.taipeizoo.model.Plant
-import com.superyao.taipeizoo.show
+import com.superyao.taipeizoo.roundedCornersShow
 
 class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
     override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
@@ -54,7 +54,7 @@ class PlantPagingAdapter(
             plant?.run {
                 binding.name.text = fNameCh
                 binding.info.text = fAlsoKnown
-                binding.image.show(fPic01URL, R.drawable.plant)
+                binding.image.roundedCornersShow(fPic01URL, R.drawable.plant)
             }
         }
     }

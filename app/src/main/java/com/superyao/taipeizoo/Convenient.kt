@@ -7,7 +7,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-fun ImageView.show(url: String?, @DrawableRes placeholder: Int) {
+fun ImageView.roundedCornersShow(url: String?, @DrawableRes placeholder: Int) {
     Glide.with(context)
         .load(url)
         .placeholder(placeholder)
@@ -22,5 +22,14 @@ fun ImageView.show(url: String?, @DrawableRes placeholder: Int) {
                 )
             )
         )
+        .into(this)
+}
+
+fun ImageView.show(url: String?, @DrawableRes placeholder: Int) {
+    Glide.with(context)
+        .load(url)
+        .placeholder(placeholder)
+        .error(R.drawable.error)
+        .apply(RequestOptions().transform(CenterCrop()))
         .into(this)
 }

@@ -8,7 +8,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.databinding.FragmentPlantDetailBinding
 import com.superyao.taipeizoo.model.Plant
-import com.superyao.taipeizoo.show
+import com.superyao.taipeizoo.roundedCornersShow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +30,7 @@ class PlantDetailBottomSheetDialogFragment : BottomSheetDialogFragment() {
     ) = FragmentPlantDetailBinding.inflate(inflater, container, false).apply {
         binding = this
         plant?.let { plant ->
-            image.show(plant.fPic01URL, R.drawable.plant)
+            image.roundedCornersShow(plant.fPic01URL, R.drawable.plant)
             name.text = "${plant.fNameCh}\n${plant.fNameEn}\n${plant.fNameLatin}"
             location.text = plant.fLocation
             nickName.text = plant.fAlsoKnown
