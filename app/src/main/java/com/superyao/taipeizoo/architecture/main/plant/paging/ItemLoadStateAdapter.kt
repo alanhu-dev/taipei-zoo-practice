@@ -1,4 +1,4 @@
-package com.superyao.taipeizoo.architecture.main.paging
+package com.superyao.taipeizoo.architecture.main.plant.paging
 
 import android.view.LayoutInflater
 import android.view.View

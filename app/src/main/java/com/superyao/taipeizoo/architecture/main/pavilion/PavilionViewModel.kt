@@ -1,4 +1,4 @@
-package com.superyao.taipeizoo.architecture.main
+package com.superyao.taipeizoo.architecture.main.pavilion
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class PavilionViewModel @Inject constructor(
     private val repository: DataRepository
 ) : ViewModel() {
 

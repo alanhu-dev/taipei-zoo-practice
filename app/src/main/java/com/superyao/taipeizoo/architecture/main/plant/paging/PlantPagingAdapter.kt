@@ -1,4 +1,4 @@
-package com.superyao.taipeizoo.architecture.main.paging
+package com.superyao.taipeizoo.architecture.main.plant.paging
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.databinding.ItemPlantBinding
 import com.superyao.taipeizoo.model.Plant
-import com.superyao.taipeizoo.utils.roundedCornersThumbnail
+import com.superyao.taipeizoo.show
 
 class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
     override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
@@ -54,7 +54,7 @@ class PlantPagingAdapter(
             plant?.run {
                 binding.name.text = fNameCh
                 binding.info.text = fAlsoKnown
-                binding.image.roundedCornersThumbnail(fPic01URL, R.drawable.plant)
+                binding.image.show(fPic01URL, R.drawable.plant)
             }
         }
     }

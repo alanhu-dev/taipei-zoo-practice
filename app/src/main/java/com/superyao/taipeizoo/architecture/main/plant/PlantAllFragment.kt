@@ -1,17 +1,17 @@
-package com.superyao.taipeizoo.architecture.main
+package com.superyao.taipeizoo.architecture.main.plant
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DefaultItemAnimator
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.superyao.taipeizoo.architecture.PlantDetailFragment
-import com.superyao.taipeizoo.architecture.main.paging.ItemLoadStateAdapter
-import com.superyao.taipeizoo.architecture.main.paging.PlantPagingAdapter
+import com.superyao.taipeizoo.architecture.PlantDetailBottomSheetDialogFragment
+import com.superyao.taipeizoo.architecture.main.plant.paging.ItemLoadStateAdapter
+import com.superyao.taipeizoo.architecture.main.plant.paging.PlantPagingAdapter
 import com.superyao.taipeizoo.databinding.FragmentPlantAllBinding
 import com.superyao.taipeizoo.model.Plant
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PlantAllFragment : BottomSheetDialogFragment(), PlantPagingAdapter.Callback {
+class PlantAllFragment : Fragment(), PlantPagingAdapter.Callback {
 
     private lateinit var binding: FragmentPlantAllBinding
 
@@ -73,7 +73,7 @@ class PlantAllFragment : BottomSheetDialogFragment(), PlantPagingAdapter.Callbac
 
     override fun onItemClick(plant: Plant?) {
         if (plant != null) {
-            val fragment = PlantDetailFragment.newInstance(plant)
+            val fragment = PlantDetailBottomSheetDialogFragment.newInstance(plant)
             fragment.show(childFragmentManager, fragment.tag)
         }
     }

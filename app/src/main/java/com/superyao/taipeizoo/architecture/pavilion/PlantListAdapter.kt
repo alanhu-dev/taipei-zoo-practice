@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.databinding.ItemPlantBinding
 import com.superyao.taipeizoo.model.Plant
-import com.superyao.taipeizoo.utils.roundedCornersThumbnail
+import com.superyao.taipeizoo.show
 
 class PlantListAdapter(
     private val callback: Callback,
@@ -45,7 +45,7 @@ class PlantListAdapter(
         fun bind(Plant: Plant) {
             binding.name.text = Plant.fNameCh
             binding.info.text = Plant.fAlsoKnown
-            binding.image.roundedCornersThumbnail(Plant.fPic01URL, R.drawable.plant)
+            binding.image.show(Plant.fPic01URL, R.drawable.plant)
         }
     }
 }

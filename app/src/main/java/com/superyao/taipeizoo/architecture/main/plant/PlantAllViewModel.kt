@@ -1,4 +1,4 @@
-package com.superyao.taipeizoo.architecture.main
+package com.superyao.taipeizoo.architecture.main.plant
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,7 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.superyao.taipeizoo.architecture.main.paging.PlantPagingSource
+import com.superyao.taipeizoo.architecture.main.plant.paging.PlantPagingSource
 import com.superyao.taipeizoo.model.Plant
 import com.superyao.taipeizoo.repository.DataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

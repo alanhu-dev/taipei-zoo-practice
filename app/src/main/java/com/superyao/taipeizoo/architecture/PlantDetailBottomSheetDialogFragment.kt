@@ -8,11 +8,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.superyao.taipeizoo.R
 import com.superyao.taipeizoo.databinding.FragmentPlantDetailBinding
 import com.superyao.taipeizoo.model.Plant
-import com.superyao.taipeizoo.utils.roundedCornersThumbnail
+import com.superyao.taipeizoo.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PlantDetailFragment : BottomSheetDialogFragment() {
+class PlantDetailBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentPlantDetailBinding
 
@@ -30,7 +30,7 @@ class PlantDetailFragment : BottomSheetDialogFragment() {
     ) = FragmentPlantDetailBinding.inflate(inflater, container, false).apply {
         binding = this
         plant?.let { plant ->
-            image.roundedCornersThumbnail(plant.fPic01URL, R.drawable.plant)
+            image.show(plant.fPic01URL, R.drawable.plant)
             name.text = "${plant.fNameCh}\n${plant.fNameEn}\n${plant.fNameLatin}"
             location.text = plant.fLocation
             nickName.text = plant.fAlsoKnown
@@ -44,7 +44,7 @@ class PlantDetailFragment : BottomSheetDialogFragment() {
     companion object {
         private const val PLANT = "PLANT"
 
-        fun newInstance(plant: Plant) = PlantDetailFragment().apply {
+        fun newInstance(plant: Plant) = PlantDetailBottomSheetDialogFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(PLANT, plant)
             }

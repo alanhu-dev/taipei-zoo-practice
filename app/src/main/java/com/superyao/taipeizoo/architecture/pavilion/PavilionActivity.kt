@@ -1,7 +1,5 @@
 package com.superyao.taipeizoo.architecture.pavilion
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -10,11 +8,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import com.superyao.dev.toolkit.color
 import com.superyao.dev.toolkit.urlIntent
 import com.superyao.taipeizoo.R
-import com.superyao.taipeizoo.architecture.PlantDetailFragment
+import com.superyao.taipeizoo.architecture.PlantDetailBottomSheetDialogFragment
 import com.superyao.taipeizoo.databinding.ActivityPavilionBinding
 import com.superyao.taipeizoo.model.Pavilion
 import com.superyao.taipeizoo.model.Plant
-import com.superyao.taipeizoo.utils.roundedCornersThumbnail
+import com.superyao.taipeizoo.show
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,7 +44,7 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
         // pavilion
 
         pavilion?.let { pavilion ->
-            binding.image.roundedCornersThumbnail(pavilion.ePicURL, R.drawable.zoo)
+            binding.image.show(pavilion.ePicURL, R.drawable.zoo)
             binding.info.text = pavilion.eInfo
             val categoryAndMemo = "${pavilion.eCategory}\n${pavilion.eMemo}"
             binding.memo.text = categoryAndMemo
@@ -83,19 +81,11 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
     }
 
     override fun onItemClick(plant: Plant) {
-        val fragment = PlantDetailFragment.newInstance(plant)
+        val fragment = PlantDetailBottomSheetDialogFragment.newInstance(plant)
         fragment.show(supportFragmentManager, fragment.tag)
     }
 
     companion object {
-        private const val PAVILION = "PAVILION"
-
-        fun launch(context: Context, pavilion: Pavilion) {
-            Intent(context, PavilionActivity::class.java).apply {
-                putExtra(PAVILION, pavilion)
-            }.let {
-                context.startActivity(it)
-            }
-        }
+        const val PAVILION = "PAVILION"
     }
 }

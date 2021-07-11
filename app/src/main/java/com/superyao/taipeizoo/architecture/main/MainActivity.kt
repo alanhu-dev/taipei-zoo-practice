@@ -1,72 +1,59 @@
 package com.superyao.taipeizoo.architecture.main
 
 import android.os.Bundle
-import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.recyclerview.widget.DefaultItemAnimator
 import com.superyao.taipeizoo.R
-import com.superyao.taipeizoo.architecture.pavilion.PavilionActivity
+import com.superyao.taipeizoo.architecture.main.pavilion.PavilionFragment
+import com.superyao.taipeizoo.architecture.main.plant.PlantAllFragment
 import com.superyao.taipeizoo.databinding.ActivityMainBinding
-import com.superyao.taipeizoo.model.Pavilion
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), PavilionListAdapter.Callback {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val viewModel by viewModels<MainViewModel>()
-
-    private val plantAllFragment = PlantAllFragment.newInstance()
+    private lateinit var bottomNavFragments: Array<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initUI()
-        refresh()
+        setupFragments()
     }
 
     private fun initUI() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
-
-        val pavilionAdapter = PavilionListAdapter(this)
-        binding.content.recyclerView.apply {
-            adapter = pavilionAdapter
-            itemAnimator = DefaultItemAnimator()
-            setHasFixedSize(true)
-        }
-
-        binding.content.swipeRefresh.setOnRefreshListener { refresh() }
-
         binding.content.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_zoo -> supportFragmentManager.commit { hide(plantAllFragment) }
-                R.id.navigation_plant -> supportFragmentManager.commit {
-                    if (!plantAllFragment.isAdded) {
-                        add(binding.content.plantFragment.id, plantAllFragment)
-                    }
-                    show(plantAllFragment)
-                }
+                R.id.navigation_zoo -> switchPage(PAVILION)
+                R.id.navigation_plant -> switchPage(PLANT_ALL)
             }
             true
         }
+    }
 
-        // bind
+    private fun setupFragments() {
+        bottomNavFragments = arrayOf(
+            PavilionFragment.newInstance(),
+            PlantAllFragment.newInstance(),
+        )
+        switchPage(PAVILION)
+    }
 
-        viewModel.pavilions.observe(this) {
-            pavilionAdapter.submitList(it)
-            binding.content.swipeRefresh.isRefreshing = false
-            binding.content.empty.visibility = if (it.isEmpty()) View.VISIBLE else View.INVISIBLE
+    private fun switchPage(idx: Int) {
+        supportFragmentManager.commit {
+            if (!bottomNavFragments[idx].isAdded) {
+                add(binding.content.fragmentContainer.id, bottomNavFragments[idx])
+            }
+            bottomNavFragments.forEach { hide(it) }
+            show(bottomNavFragments[idx])
         }
     }
 
-    private fun refresh() {
-        viewModel.refreshPavilions()
-        binding.content.swipeRefresh.isRefreshing = true
-    }
-
-    override fun onItemClick(pavilion: Pavilion) {
-        PavilionActivity.launch(this, pavilion)
+    companion object {
+        private const val PAVILION = 0
+        private const val PLANT_ALL = 1
     }
 }
