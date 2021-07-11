@@ -41,11 +41,13 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
             binding.title.text = pavilion.eName
             binding.info.text = pavilion.eInfo
 
-            var memo = "${pavilion.eCategory}"
-            if (pavilion.eMemo?.isNotEmpty() == true) {
-                memo += "\n${pavilion.eMemo}"
-            }
-            binding.memo.text = memo
+            val categoryAndMemo = "${pavilion.eCategory}\n" +
+                    if (pavilion.eMemo.isNullOrEmpty()) {
+                        getString(R.string.no_closed_information)
+                    } else {
+                        pavilion.eMemo
+                    }
+            binding.memo.text = categoryAndMemo
 
             binding.webPage.setOnClickListener {
                 startActivity(urlIntent(pavilion.eURL ?: "https://www.zoo.gov.tw/introduce/"))
