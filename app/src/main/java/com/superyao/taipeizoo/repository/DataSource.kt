@@ -10,13 +10,13 @@ interface DataSource {
         val isSuccess: Boolean = true,
     )
 
-    fun getPavilions(
+    fun loadPavilions(
         query: String = "",
         limit: Int = 0,
         offset: Int = 0
     ): Result<List<Pavilion>>
 
-    fun getPlants(
+    fun loadPlants(
         query: String = "",
         limit: Int = 0,
         offset: Int = 0

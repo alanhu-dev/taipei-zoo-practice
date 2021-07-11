@@ -6,7 +6,7 @@ import com.superyao.taipeizoo.repository.DataSource
 
 class LocalDataSource(private val dataBase: DataBase) : DataSource {
 
-    override fun getPavilions(
+    override fun loadPavilions(
         query: String,
         limit: Int,
         offset: Int
@@ -14,7 +14,7 @@ class LocalDataSource(private val dataBase: DataBase) : DataSource {
         return DataSource.Result(dataBase.pavilionDao().getPavilions())
     }
 
-    override fun getPlants(
+    override fun loadPlants(
         query: String,
         limit: Int,
         offset: Int

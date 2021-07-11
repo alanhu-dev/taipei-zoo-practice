@@ -17,7 +17,7 @@ import javax.inject.Inject
 class PlantAllViewModel @Inject constructor(
     private val repository: DataRepository
 ) : ViewModel() {
-    fun allImagesFlow(query: String = ""): Flow<PagingData<Plant>> {
+    fun plantsFlow(query: String = ""): Flow<PagingData<Plant>> {
         return Pager(PagingConfig(PlantPagingSource.pageSize)) {
             PlantPagingSource(repository, query)
         }.flow.cachedIn(viewModelScope)

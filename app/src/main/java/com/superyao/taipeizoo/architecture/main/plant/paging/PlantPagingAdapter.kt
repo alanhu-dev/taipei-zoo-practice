@@ -10,16 +10,6 @@ import com.superyao.taipeizoo.databinding.ItemPlantBinding
 import com.superyao.taipeizoo.model.Plant
 import com.superyao.taipeizoo.roundedCornersShow
 
-class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
-    override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Plant, newItem: Plant): Boolean {
-        return oldItem == newItem
-    }
-}
-
 class PlantPagingAdapter(
     private var callback: Callback,
 ) : PagingDataAdapter<Plant, PlantPagingAdapter.ViewHolder>(PlantDiffCallback()) {
@@ -57,5 +47,15 @@ class PlantPagingAdapter(
                 binding.image.roundedCornersShow(fPic01URL, R.drawable.plant)
             }
         }
+    }
+}
+
+class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
+    override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Plant, newItem: Plant): Boolean {
+        return oldItem == newItem
     }
 }

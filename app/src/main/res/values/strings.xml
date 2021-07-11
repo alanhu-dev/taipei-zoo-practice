@@ -16,6 +16,8 @@
 
     <string name="location">位置</string>
 
+    <string name="no_closed_information">無休館資訊</string>
+
     <string name="open_on_web">在網頁開啟</string>
 
     <string name="pavilion">園區</string>

@@ -41,6 +41,8 @@ class ItemLoadStateAdapter(
                     binding.loading.visibility = View.VISIBLE
                 }
                 is LoadState.NotLoading -> {
+                    binding.refresh.visibility = View.INVISIBLE
+                    binding.loading.visibility = View.INVISIBLE
                 }
                 is LoadState.Error -> {
                     binding.refresh.visibility = View.VISIBLE

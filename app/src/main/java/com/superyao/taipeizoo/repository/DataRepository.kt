@@ -23,29 +23,29 @@ class DataRepository(
         }
     }
 
-    suspend fun getPavilions(
+    suspend fun loadPavilions(
         query: String = "",
         limit: Int = 0,
         offset: Int = 0,
     ): List<Pavilion> {
-        val result = remoteDataSource.getPavilions(query, limit, offset) // remote first
+        val result = remoteDataSource.loadPavilions(query, limit, offset) // remote first
         return if (result.isSuccess) {
             if (result.data.isNotEmpty()) {
-                localDataSource.savePavilions(*result.data.toTypedArray()) // store the data to db
+                localDataSource.savePavilions(*result.data.toTypedArray()) // store to db
             }
             result.data
         } else { // if failed, get from local
             toastRemoteError()
-            localDataSource.getPavilions(query, limit, offset).data
+            localDataSource.loadPavilions(query, limit, offset).data
         }
     }
 
-    suspend fun getPlants(
+    suspend fun loadPlants(
         query: String,
         limit: Int = 0,
         offset: Int = 0,
     ): List<Plant> {
-        val result = remoteDataSource.getPlants(query, limit, offset)
+        val result = remoteDataSource.loadPlants(query, limit, offset)
         return if (result.isSuccess) {
             if (result.data.isNotEmpty()) {
                 localDataSource.savePlants(*result.data.toTypedArray())
@@ -53,7 +53,7 @@ class DataRepository(
             result.data
         } else {
             toastRemoteError()
-            localDataSource.getPlants(query, limit, offset).data
+            localDataSource.loadPlants(query, limit, offset).data
         }
     }
 }

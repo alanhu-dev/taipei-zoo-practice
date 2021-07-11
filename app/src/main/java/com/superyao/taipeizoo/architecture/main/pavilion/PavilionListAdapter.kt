@@ -45,7 +45,7 @@ class PavilionListAdapter(
         fun bind(pavilion: Pavilion) {
             binding.name.text = pavilion.eName
             binding.memo.text = if (pavilion.eMemo.isNullOrEmpty()) {
-                "無休館資訊"
+                binding.root.context.getString(R.string.no_closed_information)
             } else {
                 pavilion.eMemo
             }

@@ -14,16 +14,13 @@ class PlantPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Plant> {
         return try {
-            // Start refresh at page 1 if undefined.
             val pageNumber = params.key ?: 0
             val response = withContext(Dispatchers.IO) {
-                repository.getPlants(query, pageSize, pageSize * pageNumber)
+                repository.loadPlants(query, pageSize, pageSize * pageNumber)
             }
             val nextKey = if (response.size >= pageSize) pageNumber + 1 else null
             LoadResult.Page(response, null, nextKey)
         } catch (e: Exception) {
-            // Handle errors in this block and return LoadResult.Error if it is an
-            // expected error (such as a network failure).
             LoadResult.Error(e)
         }
     }

@@ -17,9 +17,9 @@ class PavilionViewModel @Inject constructor(
 
     val pavilions = MutableLiveData<List<Pavilion>>()
 
-    fun refreshPavilions(query: String = "") {
+    fun loadPavilions(query: String = "") {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = repository.getPavilions(query)
+            val data = repository.loadPavilions(query)
             pavilions.postValue(data)
         }
     }

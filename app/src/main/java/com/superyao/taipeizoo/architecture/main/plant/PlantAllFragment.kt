@@ -34,18 +34,18 @@ class PlantAllFragment : Fragment(), PlantPagingAdapter.Callback {
     ) = FragmentPlantAllBinding.inflate(inflater, container, false).apply {
         binding = this
         pagingAdapter = PlantPagingAdapter(this@PlantAllFragment)
-        swipeRefresh.setOnRefreshListener { pagingAdapter.refresh() }
         recyclerView.apply {
             adapter = pagingAdapter.run { withLoadStateFooter(ItemLoadStateAdapter(::refresh)) }
             itemAnimator = DefaultItemAnimator()
             setHasFixedSize(true)
         }
+        swipeRefresh.setOnRefreshListener { pagingAdapter.refresh() }
     }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch {
-            viewModel.allImagesFlow().collectLatest { data ->
+            viewModel.plantsFlow().collectLatest { data ->
                 pagingAdapter.submitData(data)
             }
         }

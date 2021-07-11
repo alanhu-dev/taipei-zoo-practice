@@ -7,7 +7,7 @@ import timber.log.Timber
 
 class RemoteDataSource(private val apiService: ApiService) : DataSource {
 
-    override fun getPavilions(
+    override fun loadPavilions(
         query: String,
         limit: Int,
         offset: Int
@@ -22,7 +22,7 @@ class RemoteDataSource(private val apiService: ApiService) : DataSource {
         }
     }
 
-    override fun getPlants(
+    override fun loadPlants(
         query: String,
         limit: Int,
         offset: Int

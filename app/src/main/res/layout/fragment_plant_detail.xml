@@ -54,7 +54,7 @@
             android:textColor="@color/textFitBackground"
             android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/flower"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/location"
@@ -78,7 +78,7 @@
             android:textColor="@color/textFitBackground"
             android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/flower"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/alias_name"
@@ -102,7 +102,7 @@
             android:textColor="@color/textFitBackground"
             android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/flower"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/brief"
@@ -126,7 +126,7 @@
             android:textColor="@color/textFitBackground"
             android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/flower"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/feature"
@@ -150,7 +150,7 @@
             android:textColor="@color/textFitBackground"
             android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/flower"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/function"
@@ -174,7 +174,7 @@
             android:textColor="@color/textFitBackground"
             android:drawablePadding="8dp"
             app:drawableStartCompat="@drawable/flower"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <TextView
             android:id="@+id/last_date"

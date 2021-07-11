@@ -41,7 +41,7 @@ class PavilionFragment : Fragment(), PavilionListAdapter.Callback {
             setHasFixedSize(true)
         }
 
-        swipeRefresh.setOnRefreshListener { refresh() }
+        swipeRefresh.setOnRefreshListener { loadPavilions() }
 
         // bind
         viewModel.pavilions.observe(viewLifecycleOwner) {
@@ -53,11 +53,11 @@ class PavilionFragment : Fragment(), PavilionListAdapter.Callback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        refresh()
+        loadPavilions()
     }
 
-    private fun refresh() {
-        viewModel.refreshPavilions()
+    private fun loadPavilions() {
+        viewModel.loadPavilions()
         binding.swipeRefresh.isRefreshing = true
     }
 

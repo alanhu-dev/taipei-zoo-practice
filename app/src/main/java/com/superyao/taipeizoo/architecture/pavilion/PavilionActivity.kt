@@ -69,7 +69,7 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
     }
 
     private fun loadPlants() {
-        pavilion?.eName?.let { viewModel.refreshPlants(it) }
+        pavilion?.eName?.let { viewModel.loadPlants(it) }
     }
 
     override fun onItemClick(plant: Plant) {
