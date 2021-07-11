@@ -19,4 +19,6 @@
     <string name="open_on_web">在網頁開啟</string>
 
     <string name="pavilion">園區</string>
+
+    <string name="request_failed_load_db">請求失敗，將讀取本地資料庫</string>
 </resources>

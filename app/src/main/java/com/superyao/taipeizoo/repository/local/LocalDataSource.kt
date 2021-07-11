@@ -5,16 +5,25 @@ import com.superyao.taipeizoo.model.Plant
 import com.superyao.taipeizoo.repository.DataSource
 
 class LocalDataSource(private val dataBase: DataBase) : DataSource {
-    override fun getPavilions(query: String, limit: Int, offset: Int): List<Pavilion> {
-        return dataBase.pavilionDao().getPavilions()
+
+    override fun getPavilions(
+        query: String,
+        limit: Int,
+        offset: Int
+    ): DataSource.Result<List<Pavilion>> {
+        return DataSource.Result(dataBase.pavilionDao().getPavilions())
     }
 
-    override fun getPlants(query: String, limit: Int, offset: Int): List<Plant> {
+    override fun getPlants(
+        query: String,
+        limit: Int,
+        offset: Int
+    ): DataSource.Result<List<Plant>> {
         val wrappedQuery = "%$query%"
         return if (limit == 0) {
-            dataBase.plantDao().getPlants(wrappedQuery)
+            DataSource.Result(dataBase.plantDao().getPlants(wrappedQuery))
         } else {
-            dataBase.plantDao().getPagingPlants(wrappedQuery, limit, offset)
+            DataSource.Result(dataBase.plantDao().getPagingPlants(wrappedQuery, limit, offset))
         }
     }
 
