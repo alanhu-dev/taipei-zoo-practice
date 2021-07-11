@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
-        binding.content.bottomNav.setOnItemSelectedListener {
+        binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_zoo -> switchPage(PAVILION)
                 R.id.navigation_plant -> switchPage(PLANT_ALL)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     private fun switchPage(idx: Int) {
         supportFragmentManager.commit {
             if (!bottomNavFragments[idx].isAdded) {
-                add(binding.content.fragmentContainer.id, bottomNavFragments[idx])
+                add(binding.fragmentContainer.id, bottomNavFragments[idx])
             }
             bottomNavFragments.forEach { hide(it) }
             show(bottomNavFragments[idx])

@@ -13,7 +13,7 @@
         android:layout_marginBottom="8dp"
         android:layout_gravity="center"
         android:visibility="gone"
-        app:srcCompat="@drawable/ic_baseline_refresh_36"
+        app:srcCompat="@drawable/ic_refresh_36"
         tools:visibility="visible" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator

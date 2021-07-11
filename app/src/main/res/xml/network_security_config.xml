@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config xmlns:tools="http://schemas.android.com/tools">
-    <!-- 兼容非 https 的圖片網址 -->
+
+    <!-- 兼容非 https 圖片網址 -->
     <base-config
         cleartextTrafficPermitted="true"
         tools:ignore="InsecureBaseConfiguration">
@@ -8,4 +9,5 @@
             <certificates src="system" />
         </trust-anchors>
     </base-config>
+
 </network-security-config>
