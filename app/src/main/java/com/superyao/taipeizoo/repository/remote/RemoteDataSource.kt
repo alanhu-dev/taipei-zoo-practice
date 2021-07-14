@@ -15,7 +15,7 @@ class RemoteDataSource(private val apiService: ApiService) : DataSource {
         return try {
             val response = apiService.getPavilion(query, limit, offset).execute()
             val pavilions = response.body()?.result?.results
-            return DataSource.Result(pavilions ?: listOf())
+            DataSource.Result(pavilions ?: listOf(), response.isSuccessful)
         } catch (e: Exception) { // simple error catching
             Timber.e(e)
             DataSource.Result(listOf(), false)
@@ -30,7 +30,7 @@ class RemoteDataSource(private val apiService: ApiService) : DataSource {
         return try {
             val response = apiService.getPlant(query, limit, offset).execute()
             val plants = response.body()?.result?.results
-            DataSource.Result(plants ?: listOf())
+            DataSource.Result(plants ?: listOf(), response.isSuccessful)
         } catch (e: Exception) {
             Timber.e(e)
             DataSource.Result(listOf(), false)

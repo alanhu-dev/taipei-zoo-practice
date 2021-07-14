@@ -36,9 +36,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupFragments() {
+        val transition = MaterialFadeThrough().apply {
+            addTarget(R.id.pavilion_fragment)
+            addTarget(R.id.plant_all_fragment)
+        }
         bottomNavFragments = arrayOf(
-            PavilionFragment.newInstance().apply { enterTransition = createTransition() },
-            PlantAllFragment.newInstance().apply { enterTransition = createTransition() },
+            PavilionFragment.newInstance().apply { enterTransition = transition },
+            PlantAllFragment.newInstance().apply { enterTransition = transition },
         )
         switchPage(PAVILION)
     }
@@ -50,13 +54,6 @@ class MainActivity : AppCompatActivity() {
             }
             bottomNavFragments.forEach { hide(it) }
             show(bottomNavFragments[idx])
-        }
-    }
-
-    private fun createTransition(): MaterialFadeThrough {
-        return MaterialFadeThrough().apply {
-            addTarget(R.id.pavilion_fragment)
-            addTarget(R.id.plant_all_fragment)
         }
     }
 

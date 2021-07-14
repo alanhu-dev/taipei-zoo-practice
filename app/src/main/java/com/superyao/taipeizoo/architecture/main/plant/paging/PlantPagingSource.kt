@@ -16,6 +16,11 @@ class PlantPagingSource(
         return try {
             val pageNumber = params.key ?: 0
             val response = withContext(Dispatchers.IO) {
+                // pageSize = 20
+                // 1st: limit = 20, offset = 20 * 0 -> id: 1 ~ 20
+                // 2nd: limit = 20, offset = 20 * 1 -> id: 21 ~ 40
+                // ... -> id: 41 ~ 60
+                // ...
                 repository.loadPlants(query, pageSize, pageSize * pageNumber)
             }
             val nextKey = if (response.size >= pageSize) pageNumber + 1 else null
@@ -28,6 +33,6 @@ class PlantPagingSource(
     override fun getRefreshKey(state: PagingState<Int, Plant>): Int? = null
 
     companion object {
-        const val pageSize = 10
+        const val pageSize = 20
     }
 }
