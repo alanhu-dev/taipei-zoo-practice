@@ -23,7 +23,7 @@
                 style="@style/AppTheme.Toolbar"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                app:title="台北市立動物園"
+                app:title="@string/app_name"
                 app:layout_scrollFlags="scroll|enterAlways|snap" />
 
         </com.google.android.material.appbar.AppBarLayout>

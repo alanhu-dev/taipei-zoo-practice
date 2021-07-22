@@ -2,11 +2,11 @@ package com.superyao.taipeizoo.di
 
 import android.annotation.SuppressLint
 import android.app.Application
-import com.superyao.taipeizoo.repository.DataRepository
-import com.superyao.taipeizoo.repository.local.DataBase
-import com.superyao.taipeizoo.repository.local.LocalDataSource
-import com.superyao.taipeizoo.repository.remote.ApiService
-import com.superyao.taipeizoo.repository.remote.RemoteDataSource
+import com.superyao.taipeizoo.data.DataRepository
+import com.superyao.taipeizoo.data.local.DataBase
+import com.superyao.taipeizoo.data.local.LocalDataSource
+import com.superyao.taipeizoo.data.remote.ApiService
+import com.superyao.taipeizoo.data.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
