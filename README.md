@@ -23,3 +23,6 @@
 
 ## 😵
 週六操作 api 時還很快速且正常，但星期日開始出現：javax.net.ssl.SSLHandshakeException: Chain validation failed。在 PC 使用 chrome 等瀏覽器、Postman 等，同樣會提示證書過期等不安全資訊。因此改為使用忽略證書安全性的 OkHttpClient (at SingletonModule)。
+
+## 🎞
+https://www.youtube.com/watch?v=oRTDaOalY_w
