@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.superyao.taipeizoo">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.superyao.taipeizoo.App"
-        android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
-        android:roundIcon="@mipmap/icon_round"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
-        android:networkSecurityConfig="@xml/network_security_config">
+        android:theme="@style/AppTheme">
 
-        <activity android:name="com.superyao.taipeizoo.ui.main.MainActivity">
+        <activity
+            android:name="com.superyao.taipeizoo.ui.main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.superyao.taipeizoo.ui.pavilion.PavilionActivity" />
+        <activity
+            android:name="com.superyao.taipeizoo.ui.pavilion.PavilionActivity"
+            android:exported="false" />
 
     </application>
 
