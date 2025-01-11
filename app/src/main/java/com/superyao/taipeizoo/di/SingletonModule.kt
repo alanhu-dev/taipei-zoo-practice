@@ -11,9 +11,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
+import okhttp3.dnsoverhttps.DnsOverHttps
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
+import java.net.InetAddress
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import javax.inject.Qualifier
@@ -27,7 +32,26 @@ import javax.net.ssl.X509TrustManager
 object SingletonModule {
 
     private fun baseOkHttpBuilder(): OkHttpClient.Builder {
-        return OkHttpClient.Builder().retryOnConnectionFailure(true)
+        return OkHttpClient.Builder()
+            .retryOnConnectionFailure(true)
+            .dns(
+                DnsOverHttps.Builder()
+                    .client(getBootstrapClient())
+                    .url("https://1.1.1.1/dns-query".toHttpUrl())
+                    .bootstrapDnsHosts(
+                        InetAddress.getByName("1.1.1.1"),
+                        InetAddress.getByName("1.0.0.1"),
+                    )
+                    .includeIPv6(false)
+                    .build()
+            )
+    }
+
+    private fun getBootstrapClient(): OkHttpClient {
+        val cacheFile = File("cacheDir", "okHttpCache")
+        val maxSize = 10L * 1024 * 1024
+        val appCache = Cache(cacheFile, maxSize)
+        return OkHttpClient.Builder().cache(appCache).build()
     }
 
     @Qualifier
