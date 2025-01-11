@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetStart="@layout/activity_pavilion"
         app:constraintSetEnd="@layout/activity_pavilion_end"
+        app:constraintSetStart="@layout/activity_pavilion"
         app:duration="300">
 
         <OnSwipe
+            app:dragDirection="dragUp"
+            app:moveWhenScrollAtTop="true"
+            app:nestedScrollFlags="supportScrollUp"
             app:touchAnchorId="@id/recycler_view"
-            app:touchAnchorSide="top"
-            app:dragDirection="dragUp" />
+            app:touchAnchorSide="top" />
 
         <KeyFrameSet>
 
             <KeyAttribute
-                app:motionTarget="@id/description_container"
+                android:alpha="0"
                 app:curveFit="linear"
                 app:framePosition="30"
-                android:alpha="0" />
+                app:motionTarget="@id/description_container" />
 
             <KeyAttribute
-                app:motionTarget="@id/toolbar_bg"
+                android:alpha="0"
                 app:curveFit="linear"
                 app:framePosition="70"
-                android:alpha="0" />
+                app:motionTarget="@id/toolbar_bg" />
 
             <KeyAttribute
-                app:motionTarget="@id/title"
+                android:alpha="0"
                 app:curveFit="linear"
                 app:framePosition="90"
-                android:alpha="0" />
+                app:motionTarget="@id/title" />
 
         </KeyFrameSet>
 
