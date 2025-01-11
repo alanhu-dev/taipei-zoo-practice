@@ -30,7 +30,7 @@ class PlantDetailBottomSheetDialogFragment : BottomSheetDialogFragment() {
     ) = FragmentPlantDetailBinding.inflate(inflater, container, false).apply {
         binding = this
         plant?.let { plant ->
-            image.roundedCornersShow(plant.fPic01URL, R.drawable.plant)
+            image.roundedCornersShow(plant.safePic01URL, R.drawable.plant)
 
             var names = plant.fNameCh
             if (plant.fNameEn?.isNotEmpty() == true) {

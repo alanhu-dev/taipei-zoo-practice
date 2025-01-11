@@ -49,7 +49,7 @@ class PavilionListAdapter(
             } else {
                 pavilion.eMemo
             }
-            binding.image.roundedCornersShow(pavilion.ePicURL, R.drawable.zoo)
+            binding.image.roundedCornersShow(pavilion.safePicURL, R.drawable.zoo)
         }
     }
 }

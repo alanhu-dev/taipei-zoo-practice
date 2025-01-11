@@ -45,7 +45,7 @@ class PlantListAdapter(
         fun bind(Plant: Plant) {
             binding.name.text = Plant.fNameCh
             binding.info.text = Plant.fAlsoKnown
-            binding.image.roundedCornersShow(Plant.fPic01URL, R.drawable.plant)
+            binding.image.roundedCornersShow(Plant.safePic01URL, R.drawable.plant)
         }
     }
 }

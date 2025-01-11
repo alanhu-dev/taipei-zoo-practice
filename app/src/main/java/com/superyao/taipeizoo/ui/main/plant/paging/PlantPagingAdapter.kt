@@ -44,7 +44,7 @@ class PlantPagingAdapter(
             plant?.run {
                 binding.name.text = fNameCh
                 binding.info.text = fAlsoKnown
-                binding.image.roundedCornersShow(fPic01URL, R.drawable.plant)
+                binding.image.roundedCornersShow(safePic01URL, R.drawable.plant)
             }
         }
     }

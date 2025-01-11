@@ -9,37 +9,34 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "pavilion")
 @Parcelize
 data class Pavilion(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @SerializedName("_id")
-    val id: Int? = null,
+    val id: Int,
 
-    @SerializedName("E_Pic_URL")
-    val ePicURL: String? = null,
-
-    @SerializedName("E_Info")
-    val eInfo: String? = null,
-
-    @SerializedName("E_Category")
-    val eCategory: String? = null,
-
-    @SerializedName("_full_count")
-    val fullCount: String? = null,
-
-    @SerializedName("rank")
-    val rank: Double? = null,
-
-    @SerializedName("E_Memo")
-    val eMemo: String? = null,
-
-    @SerializedName("E_no")
+    @SerializedName("e_no")
     val eNo: String? = null,
 
-    @SerializedName("E_Name")
+    @SerializedName("e_category")
+    val eCategory: String? = null,
+
+    @SerializedName("e_name")
     val eName: String? = null,
 
-    @SerializedName("E_URL")
-    val eURL: String? = null,
+    @SerializedName("e_pic_url")
+    val ePicURL: String? = null,
 
-    @SerializedName("E_Geo")
-    val eGeo: String? = null
-) : Parcelable
+    @SerializedName("e_info")
+    val eInfo: String? = null,
+
+    @SerializedName("e_memo")
+    val eMemo: String? = null,
+
+    @SerializedName("e_geo")
+    val eGeo: String? = null,
+
+    @SerializedName("e_url")
+    val eURL: String? = null
+) : Parcelable {
+    val safePicURL: String
+        get() = ePicURL?.replace("http://", "https://").orEmpty()
+}

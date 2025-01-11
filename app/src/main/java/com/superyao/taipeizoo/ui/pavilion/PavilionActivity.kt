@@ -37,7 +37,7 @@ class PavilionActivity : AppCompatActivity(), PlantListAdapter.Callback {
         // pavilion
 
         pavilion?.let { pavilion ->
-            binding.image.show(pavilion.ePicURL, R.drawable.zoo)
+            binding.image.show(pavilion.safePicURL, R.drawable.zoo)
             binding.title.text = pavilion.eName
             binding.info.text = pavilion.eInfo
 

@@ -11,14 +11,14 @@ interface ApiService {
         const val baseUrl = "https://data.taipei/api/v1/dataset/"
     }
 
-    @GET("5a0e5fbb-72f8-41c6-908e-2fb25eff9b8a?scope=resourceAquire")
+    @GET("9683ba26-109e-4cb8-8f3d-03d1b349db9f?scope=resourceAquire")
     fun getPavilion(
         @Query("q") query: String = "",
         @Query("limit") limit: Int = 0,
         @Query("offset") offset: Int = 0,
     ): Call<PavilionResponse>
 
-    @GET("f18de02f-b6c9-47c0-8cda-50efad621c14?scope=resourceAquire")
+    @GET("e20706d8-bf89-4e6a-9768-db2a10bb2ba4?scope=resourceAquire")
     fun getPlant(
         @Query("q") query: String,
         @Query("limit") limit: Int = 0,

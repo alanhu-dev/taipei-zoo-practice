@@ -13,114 +13,111 @@ data class Plant(
     @SerializedName("_id")
     val id: Int? = null,
 
-    @SerializedName("\uFEFFF_Name_Ch")
+    @SerializedName("f_name_ch")
     val fNameCh: String? = null,
 
-    @SerializedName("F_pdf02_ALT")
-    val fPdf02ALT: String? = null,
-
-    @SerializedName("F_Name_En")
+    @SerializedName("f_name_en")
     val fNameEn: String? = null,
 
-    @SerializedName("F_Voice01_URL")
-    val fVoice01URL: String? = null,
-
-    @SerializedName("F_Name_Latin")
+    @SerializedName("f_name_latin")
     val fNameLatin: String? = null,
 
-    @SerializedName("F_Pic04_URL")
-    val fPic04URL: String? = null,
-
-    @SerializedName("F_Summary")
-    val fSummary: String? = null,
-
-    @SerializedName("F_Brief")
-    val fBrief: String? = null,
-
-    @SerializedName("F_Location")
-    val fLocation: String? = null,
-
-    @SerializedName("F_pdf02_URL")
-    val fPdf02URL: String? = null,
-
-    @SerializedName("F_Voice01_ALT")
-    val fVoice01ALT: String? = null,
-
-    @SerializedName("F_Pic03_ALT")
-    val fPic03ALT: String? = null,
-
-    @SerializedName("F_Voice02_URL")
-    val fVoice02URL: String? = null,
-
-    @SerializedName("rank")
-    val rank: Double? = null,
-
-    @SerializedName("F_Voice02_ALT")
-    val fVoice02ALT: String? = null,
-
-    @SerializedName("F_Pic01_URL")
-    val fPic01URL: String? = null,
-
-    @SerializedName("F_Pic02_ALT")
-    val fPic02ALT: String? = null,
-
-    @SerializedName("F_Keywords")
-    val fKeywords: String? = null,
-
-    @SerializedName("F_Family")
+    @SerializedName("f_family")
     val fFamily: String? = null,
 
-    @SerializedName("F_CID")
-    val fCID: String? = null,
-
-    @SerializedName("F_Pic01_ALT")
-    val fPic01ALT: String? = null,
-
-    @SerializedName("F_Pic02_URL")
-    val fPic02URL: String? = null,
-
-    @SerializedName("F_Update")
-    val fUpdate: String? = null,
-
-    @SerializedName("F_Voice03_URL")
-    val fVoice03URL: String? = null,
-
-    @SerializedName("F_Code")
-    val fCode: String? = null,
-
-    @SerializedName("F_Function＆Application")
-    val fFunctionApplication: String? = null,
-
-    @SerializedName("F_Voice03_ALT")
-    val fVoice03ALT: String? = null,
-
-    @SerializedName("F_Pic03_URL")
-    val fPic03URL: String? = null,
-
-    @SerializedName("F_Vedio_URL")
-    val fVedioURL: String? = null,
-
-    @SerializedName("_full_count")
-    val fullCount: String? = null,
-
-    @SerializedName("F_pdf01_ALT")
-    val fPdf01ALT: String? = null,
-
-    @SerializedName("F_AlsoKnown")
-    val fAlsoKnown: String? = null,
-
-    @SerializedName("F_pdf01_URL")
-    val fPdf01URL: String? = null,
-
-    @SerializedName("F_Feature")
-    val fFeature: String? = null,
-
-    @SerializedName("F_Pic04_ALT")
-    val fPic04ALT: String? = null,
-
-    @SerializedName("F_Genus")
+    @SerializedName("f_genus")
     val fGenus: String? = null,
 
-    @SerializedName("F_Geo")
-    val fGeo: String? = null
-) : Parcelable
+    @SerializedName("f_summary")
+    val fSummary: String? = null,
+
+    @SerializedName("f_brief")
+    val fBrief: String? = null,
+
+    @SerializedName("f_feature")
+    val fFeature: String? = null,
+
+    @SerializedName("f_function＆application")
+    val fFunctionApplication: String? = null,
+
+    @SerializedName("f_keywords")
+    val fKeywords: String? = null,
+
+    @SerializedName("f_alsoknown")
+    val fAlsoKnown: String? = null,
+
+    @SerializedName("f_location")
+    val fLocation: String? = null,
+
+    @SerializedName("f_geo")
+    val fGeo: String? = null,
+
+    @SerializedName("f_pic01_url")
+    val fPic01URL: String? = null,
+
+    @SerializedName("f_pic01_alt")
+    val fPic01ALT: String? = null,
+
+    @SerializedName("f_pic02_url")
+    val fPic02URL: String? = null,
+
+    @SerializedName("f_pic02_alt")
+    val fPic02ALT: String? = null,
+
+    @SerializedName("f_pic03_url")
+    val fPic03URL: String? = null,
+
+    @SerializedName("f_pic03_alt")
+    val fPic03ALT: String? = null,
+
+    @SerializedName("f_pic04_url")
+    val fPic04URL: String? = null,
+
+    @SerializedName("f_pic04_alt")
+    val fPic04ALT: String? = null,
+
+    @SerializedName("f_pdf01_url")
+    val fPdf01URL: String? = null,
+
+    @SerializedName("f_pdf01_alt")
+    val fPdf01ALT: String? = null,
+
+    @SerializedName("f_pdf02_url")
+    val fPdf02URL: String? = null,
+
+    @SerializedName("f_pdf02_alt")
+    val fPdf02ALT: String? = null,
+
+    @SerializedName("f_voice01_url")
+    val fVoice01URL: String? = null,
+
+    @SerializedName("f_voice01_alt")
+    val fVoice01ALT: String? = null,
+
+    @SerializedName("f_voice02_url")
+    val fVoice02URL: String? = null,
+
+    @SerializedName("f_voice02_alt")
+    val fVoice02ALT: String? = null,
+
+    @SerializedName("f_voice03_url")
+    val fVoice03URL: String? = null,
+
+    @SerializedName("f_voice03_alt")
+    val fVoice03ALT: String? = null,
+
+    @SerializedName("f_vedio_url")
+    val fVedioURL: String? = null,
+
+    @SerializedName("f_update")
+    val fUpdate: String? = null,
+
+    @SerializedName("f_cid")
+    val fCID: String? = null,
+
+    @SerializedName("f_code")
+    val fCode: String? = null
+) : Parcelable {
+    val safePic01URL: String
+        get() = fPic01URL?.replace("http://", "https://").orEmpty()
+}
